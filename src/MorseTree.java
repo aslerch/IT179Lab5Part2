@@ -49,4 +49,24 @@ public class MorseTree<Character> {
         }
     }
 
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        preorderString(root, 1, sb);
+        return sb.toString();
+    }
+
+    private void preorderString(Node node, int depth, StringBuilder sb) {
+        for (int i = 1; i < depth; i++) {
+            sb.append("  ");
+        }
+        if (node == null)
+            sb.append("null\n");
+        else {
+            sb.append(node.toString());
+            sb.append("\n");
+            preorderString(node.left, depth + 1, sb);
+            preorderString(node.right, depth + 1, sb);
+        }
+    }
+
 }

@@ -6,9 +6,12 @@ public class Main {
 
     public static void main(String [] args) {
 
+        MorseTree tree = buildTree();
+        System.out.print(tree);
+
     }
 
-    public MorseTree<Character> buildTree() {
+    public static MorseTree<Character> buildTree() {
         MorseTree<Character> tree = new MorseTree<>();
         try {
             Scanner fileReader = new Scanner(new File("letters.txt"));
