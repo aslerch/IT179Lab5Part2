@@ -28,10 +28,21 @@ public class MorseTree<Character> {
     public MorseTree() {}
 
     /** Methods */
+    /**
+     * Starter add method
+     * @param newChar
+     * @param morsePointers
+     */
     public void add(char newChar, String morsePointers) {
         add(root, newChar, morsePointers);
     }
 
+    /**
+     * Recursive add method
+     * @param localRoot
+     * @param newChar
+     * @param morsePointers
+     */
     private void add(Node<Character> localRoot, char newChar, String morsePointers) {
         for (int i = 0; i < morsePointers.length(); i++) {
             if (morsePointers.charAt(i) == '.') {
@@ -67,6 +78,26 @@ public class MorseTree<Character> {
             preorderString(node.left, depth + 1, sb);
             preorderString(node.right, depth + 1, sb);
         }
+    }
+
+    public String decode(String message) {
+        String [] info = message.split(" ");
+        String returnString = "";
+        for (int i = 0; i < info.length; i++) {
+            returnString += decode(root, info[i]);
+        }
+        return returnString;
+    }
+
+    private Character decode(Node localRoot, String morseString) {
+        Node charNode = localRoot;
+        for (int i = 0; i < morseString.length(); i++) {
+            if (morseString.charAt(i) == '.')
+                charNode = charNode.left;
+            if (morseString.charAt(i) == '-')
+                charNode = charNode.right;
+        }
+        return (Character)charNode.data;
     }
 
 }

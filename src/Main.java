@@ -6,8 +6,7 @@ public class Main {
 
     public static void main(String [] args) {
 
-        MorseTree tree = buildTree();
-        System.out.print(tree);
+
 
     }
 
@@ -23,6 +22,10 @@ public class Main {
             System.out.print("file cannot be found");
         }
         return tree;
+    }
+
+    public static String decode(MorseTree tree, String message) {
+        return tree.decode(message);
     }
 
 }
