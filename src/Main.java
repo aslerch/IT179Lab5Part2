@@ -2,11 +2,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/** Driver class for the program */
 public class Main {
 
     static Scanner keyboard = new Scanner(System.in);
     static MorseTree tree = buildTree();
 
+    /** Main method */
     public static void main(String [] args) {
 
         String userInput = askForValidMorseCode("Please enter encoded message or stop to exit: ");
@@ -18,6 +20,10 @@ public class Main {
         System.out.print("Thank you for using our decoder!");
     }
 
+    /**
+     * Creates and fills a MorseTree object with
+     * @return MorseTree object
+     */
     public static MorseTree<Character> buildTree() {
         MorseTree<Character> tree = new MorseTree<>();
         try {
@@ -32,6 +38,11 @@ public class Main {
         return tree;
     }
 
+    /**
+     * Decodes a morse code message
+     * @param message message that is in morse code
+     * @return decoded message
+     */
     public static String decode(String message) {
         return tree.decode(message);
     }

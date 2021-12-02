@@ -60,12 +60,22 @@ public class MorseTree<Character> {
         }
     }
 
+    /**
+     * Starter toString method
+     * @return Preorder graph of all characters in the tree
+     */
     public String toString() {
         StringBuilder sb = new StringBuilder();
         preorderString(root, 1, sb);
         return sb.toString();
     }
 
+    /**
+     * Recursive method to help toString method print all characters
+     * @param node Node that is going to be printed
+     * @param depth level of the tree that we are currently in
+     * @param sb StringBuilder object
+     */
     private void preorderString(Node node, int depth, StringBuilder sb) {
         for (int i = 1; i < depth; i++) {
             sb.append("  ");
@@ -80,6 +90,11 @@ public class MorseTree<Character> {
         }
     }
 
+    /**
+     * Starter method to decode a morse code message that is passed into it
+     * @param message The morse code message to be decoded
+     * @return The decoded message
+     */
     public String decode(String message) {
         String [] info = message.split(" ");
         String returnString = "";
@@ -89,6 +104,12 @@ public class MorseTree<Character> {
         return returnString;
     }
 
+    /**
+     * Recursive decode method that helps traverse the tree
+     * @param localRoot Root of the subtree that is currently being looked at
+     * @param morseString The morse code message that is being decoded
+     * @return The Character that the current morse code info[] element represents
+     */
     private Character decode(Node localRoot, String morseString) {
         Node charNode = localRoot;
         for (int i = 0; i < morseString.length(); i++) {
